@@ -31,9 +31,10 @@ export function activate(context: vscode.ExtensionContext) {
 			const line_text = mark_editor.document.lineAt(mark_position.line).text;
 			const mark_line_max_char = line_text.length;
 			if (mark_position.character > mark_line_max_char) {
-				leblanc_have_mark = false;
-				vscode.window.showInformationMessage('leblanc: error position');
-				return;
+				// leblanc_have_mark = false;
+				// vscode.window.showInformationMessage('leblanc: error position');
+				// return;
+				mark_position = mark_position.with(mark_position.line, mark_line_max_char);
 			}
 			
 			const mark_selection = new vscode.Selection(mark_position, mark_position);
